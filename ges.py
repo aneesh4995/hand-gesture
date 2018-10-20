@@ -13,7 +13,7 @@ while(1):
         kernel = np.ones((3,3),np.uint8)
         
         #define region of interest
-        roi=frame[100:300, 100:300]
+        roi=frame[100:400, 100:400]
         
         
         cv2.rectangle(frame,(100,100),(300,300),(0,255,0),0)    
