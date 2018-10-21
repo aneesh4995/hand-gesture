@@ -11,17 +11,15 @@ import math
 from gtts import gTTS
 from win32com.client import Dispatch
 from time import sleep
+import random
 def spk(string):
+    file_naming = str(random.randint(0,100)) 
     tts = gTTS(text=string, lang='en')
-    tts.save("good.wav")
+    tts.save(file_naming+ ".wav")
     mp = Dispatch("WMPlayer.OCX")
-    tune = mp.newMedia("good.wav")
-    mp.currentPlaylist.appendItem(tune)
-    mp.controls.play()
-    sleep(1)
-    mp.controls.playItem(tune)
-    #input("Press Enter to stop playing")
-    mp.controls.stop()
+    tune = mp.newMedia("C:/Users/pradeep kumar/"+file_naming+".wav")
+    return tune, mp
+
 
 
 cap = cv2.VideoCapture(0)
@@ -116,6 +114,14 @@ while(cap.isOpened()):
     elif count_defects == 2:
         #str = "This is a basic hand gesture recognizer"
         cv2.putText(img,"2", (5, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, 2)
+        #commenting out for now
+        """sleep(5)
+        tune, mp = spk("you put two")
+        mp.currentPlaylist.appendItem(tune)
+        mp.controls.play()
+         sleep(1)
+        #print(file_naming)
+        (mp.controls.playItem(tune))"""
     elif count_defects == 3:
         cv2.putText(img,"3", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 2, 2)
     elif count_defects == 4:
@@ -132,3 +138,25 @@ while(cap.isOpened()):
     k = cv2.waitKey(10)
     if k == 27:
         break
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
